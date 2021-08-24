@@ -16,7 +16,7 @@ try {
 }
 
 try {
-  const files = fs.readdirSync();
+  const files = fs.readdirSync('.');
   console.log(`current directory: ${files}`);
   const upLevel = fs.readdirSync('../');
   console.log(`level up directory: ${upLevel}`);
