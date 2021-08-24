@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Version updater
         id: hello
-        uses: derbur/compose-version-bot@v1.12
+        uses: derbur/compose-version-bot@v1.13
         with:
           who-to-greet: 'derbur'
       # Use the output from the `hello` step
