@@ -1,17 +1,17 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  update_docker_compose_images:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Update docker-compose image versions
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Version updater
-        id: hello
-        uses: derbur/compose-version-bot@v1.13
-        with:
-          who-to-greet: 'derbur'
+      - name: Update Image Versions
+        # id: hello
+        uses: derbur/compose-version-bot@v1.14
+        # with:
+        #   who-to-greet: 'derbur'
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      # - name: Get the output time
+      #   run: echo "The time was ${{ steps.hello.outputs.time }}"
