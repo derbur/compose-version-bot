@@ -6315,6 +6315,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(507);
 const github = __nccwpck_require__(322);
+const fs = __nccwpck_require__(747);
 
 try {
   // who-to-greet defined in input metadata file
@@ -6325,6 +6326,18 @@ try {
   // get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2);
   console.log(`the event payload: ${payload}`);
+} catch (error) {
+  core.setFailed(error.message);
+}
+
+try {
+  console.log('updating image...');
+  const imageConfig = JSON.parse(fs.readFileSync('./test/data/image-config.json', { encoding: 'utf-8' }));
+  const imageRegex = new RegExp(`^${imageConfig.registry}\/${imageConfig.image}:(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`, 'g');
+  const imageString = `${imageConfig.registry}/${imageConfig.image}:${imageConfig.tag}`;
+  const compose = fs.readFileSync('./test/data/docker-compose.yml', { encoding: 'utf-8' });
+  const updatedCompose = compose.replace(imageRegex, imageString);
+  console.log(updatedCompose);
 } catch (error) {
   core.setFailed(error.message);
 }
