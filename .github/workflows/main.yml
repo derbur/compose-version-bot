@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: derbur/compose-version-bot@v1.1
+        uses: derbur/compose-version-bot@v1.2
         with:
           who-to-greet: 'derbur'
       # Use the output from the `hello` step
