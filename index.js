@@ -18,8 +18,6 @@ try {
 try {
   const files = fs.readdirSync('.');
   console.log(`current directory: ${files}`);
-  const upLevel = fs.readdirSync('/github/workspace');
-  console.log(`workspace: ${upLevel}`);
   console.log('updating image...');
   const imageConfig = JSON.parse(fs.readFileSync('./test/data/image-config.json', { encoding: 'utf-8' }));
   const imageRegex = /test_registry\/image_name:(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?/g;
