@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Version updater
         id: hello
-        uses: derbur/compose-version-bot@v1.6
+        uses: derbur/compose-version-bot@v1.7
         with:
           who-to-greet: 'derbur'
       # Use the output from the `hello` step

@@ -16,6 +16,10 @@ try {
 }
 
 try {
+  const files = fs.readdirSync();
+  console.log(`current directory: ${files}`);
+  const upLevel = fs.readdirSync('../');
+  console.log(`level up directory: ${upLevel}`);
   console.log('updating image...');
   const imageConfig = JSON.parse(fs.readFileSync('../test/data/image-config.json', { encoding: 'utf-8' }));
   const imageRegex = new RegExp(`^${imageConfig.registry}\/${imageConfig.image}:(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$`, 'g');
